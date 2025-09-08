@@ -1,12 +1,47 @@
-# React + Vite
+# 🚀 Social Media WebApp (Under Development)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **Social Media WebApp** — a personal project where I'm laying the groundwork for a full-fledged social networking platform using **React**, **Bootstrap**, and **React Icons**.
 
-Currently, two official plugins are available:
+Right now, it's in the **very early stages** — just a barebones structure with a:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧱 **Sidebar**
+- 🎯 **Header**
+- 📦 **Footer**
 
-## Expanding the ESLint configuration
+No responsiveness. No interactivity. No backend.  
+Just clean, organized, component-based scaffolding to build on top of. 💡
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Built With (So Far)
+
+| Tool | Description |
+|------|-------------|
+| ⚛️ React | UI Library for building components |
+| 🅱️ Bootstrap 5 | Quick styling & layout (no custom CSS yet) |
+| 🎨 React Icons | For consistent and scalable icons |
+| ⚡ Vite | Fast build tool & dev server |
+
+---
+
+## 📸 Current State
+
+> 🧪 **This is NOT a functional app yet.**  
+> It’s a static UI scaffold meant for rapid expansion in upcoming versions.
+
+**Included Components:**
+- `Header.jsx` — simple top bar
+- `Sidebar.jsx` — vertical nav layout
+- `Footer.jsx` — bottom section placeholder
+
+---
+
+## 🧑‍💻 How to Run
+
+Clone the repo and get started locally:
+
+```bash
+git clone https://github.com/SoumyadeepBiswas-2027/Social_Media_WebApp.git
+cd Social_Media_WebApp
+npm install
+npm run dev
