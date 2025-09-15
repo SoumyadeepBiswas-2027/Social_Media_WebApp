@@ -6,7 +6,7 @@ export const PostList = () => {
   return (
     <>
       {postList.map((post) => (
-        <Post key={post.id} post ={post}/>
+        <Post key={post.Id} post ={post}/>
       ))}
     </>
   );
