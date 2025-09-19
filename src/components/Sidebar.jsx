@@ -1,7 +1,5 @@
 const Sidebar = ({ selectedTab, setSelectedTab }) => {
-  // const handleonClick = (tabName) => {
-  //   setSelectedTab(tabName);-
-  // }
+  
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
