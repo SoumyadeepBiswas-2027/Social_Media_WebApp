@@ -2,39 +2,52 @@ import { useContext, useRef } from "react";
 import { PostList } from "../store/post-list-store";
 
 export const CreatePost = () => {
-
-const { addPost } = useContext(PostList);
+  const { addPost } = useContext(PostList);
 
   const userIdElement = useRef();
-   const postTitleElement  = useRef();
-    const postBodyElement  = useRef();
-     const reactionsElement = useRef();
-      const tagsElement = useRef();
+  const postTitleElement = useRef();
+  const postBodyElement = useRef();
+  const reactionsElement = useRef();
+  const tagsElement = useRef();
 
-      const handleSubmit =(event) =>{
-        event.preventDefault();
-        const userId = userIdElement.current.value;
-        const postTitle= postTitleElement.current.value; 
-        const postBody= postBodyElement.current.value;
-        const reactions= reactionsElement.current.value;
-        const tags = tagsElement.current.value.split(" "); //to split tags with spaces
-        userIdElement.current.value = "";
-        postTitleElement.current.value = ""; 
-        postBodyElement.current.value = "";
-        reactionsElement.current.value = "";
-        tagsElement.current.value = "";
-      addPost(userId,postTitle,postBody,reactions,tags);
-      };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userId = userIdElement.current.value;
+    const postTitle = postTitleElement.current.value;
+    const postBody = postBodyElement.current.value;
+    const reactions = reactionsElement.current.value;
+    const tags = tagsElement.current.value.split(" "); //to split tags with spaces
+
+    // userIdElement.current.value = "";
+    // postTitleElement.current.value = "";
+    // postBodyElement.current.value = "";
+    // reactionsElement.current.value = "";
+    // tagsElement.current.value = "";
+
+    fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify( {
+        title: postTitle,
+        body: postBody,
+        reaction: reactions,
+        userId: userId,
+        tags: tags,
+      }),
+    })
+      .then((res) => res.json())
+      .then(post =>{ addPost(post)});
+  };
 
   return (
     <form className="create-post" onSubmit={handleSubmit}>
-     <div className="mb-3">
+      <div className="mb-3">
         <label htmlFor="userId" className="form-label">
           Place your User ID here
         </label>
         <input
           type="text"
-          ref={userIdElement }
+          ref={userIdElement}
           className="form-control"
           id="userId"
           placeholder="Your User Id!"
@@ -47,7 +60,7 @@ const { addPost } = useContext(PostList);
         </label>
         <input
           type="text"
-          ref={postTitleElement }
+          ref={postTitleElement}
           className="form-control"
           id="title"
           placeholder="How are you felling today..."
@@ -56,11 +69,11 @@ const { addPost } = useContext(PostList);
 
       <div className="mb-3">
         <label htmlFor="body" className="form-label">
-         Post Content
+          Post Content
         </label>
         <textarea
           type="text"
-          ref={postBodyElement }
+          ref={postBodyElement}
           rows="4"
           className="form-control"
           id="body"
@@ -68,13 +81,13 @@ const { addPost } = useContext(PostList);
         />
       </div>
 
-       <div className="mb-3">
+      <div className="mb-3">
         <label htmlFor="reactions" className="form-label">
           Number of Reactions
         </label>
         <input
           type="text"
-          ref={reactionsElement }
+          ref={reactionsElement}
           className="form-control"
           id="reactions"
           placeholder="how many people reacted to this post"
@@ -83,17 +96,16 @@ const { addPost } = useContext(PostList);
 
       <div className="mb-3">
         <label htmlFor="tags" className="form-label">
-         Enter your hashtags here
+          Enter your hashtags here
         </label>
         <input
           type="text"
-          ref={tagsElement }
+          ref={tagsElement}
           className="form-control"
           id="tags"
           placeholder="Please enter tags using space"
         />
       </div>
-     
 
       <button type="submit" className="btn btn-primary">
         Post

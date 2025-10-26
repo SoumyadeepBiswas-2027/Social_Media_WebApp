@@ -10,7 +10,7 @@ export const PostList = () => {
  const[fetching ,setFetching ]=useState(false)
 
 
-  useEffect(() =>{
+ /* useEffect(() =>{
     setFetching(true);
     const controller = new AbortController();
     const signal = controller.signal;
@@ -27,10 +27,10 @@ export const PostList = () => {
         controller.abort();
       }
   }, []);
-  
-  const handleGetPostsClick = () => {
+
+  // const handleGetPostsClick = () => {
    
-  };
+  // };*/
 
   return (
     <>
@@ -38,7 +38,7 @@ export const PostList = () => {
       {!fetching && postList.length === 0 && <WelcomeMessage />}
 
       {!fetching && postList.map((post) => (
-        <Post key={post.Id} post={post} />
+        <Post key={post.id} post={post} />
       ))}
     </>
   );

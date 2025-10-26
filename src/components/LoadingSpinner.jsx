@@ -1,7 +1,7 @@
 export const LoadingSpinner = () => {
   return (
     <h1>
-      <div class="d-flex justify-content-center spinner">
+      <div className="d-flex justify-content-center spinner">
         <div
           className="spinner-border"
           role="status"

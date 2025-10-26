@@ -24,16 +24,10 @@ const PostListReducer = (currPostList, action) => {
 export const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(PostListReducer, []); //removed DEFAULT_POST_LIST
 
-  const addPost = (userId, postTitle, postBody, reactions, tags) => {
+  const addPost = (post) => {
     dispatchPostList({
       type: "ADD_POST",
-      payload: {
-        Id: Date.now(), //to get unique id we use date.now(){11:33:45}yt
-        title: postTitle,
-        body: postBody,
-        reaction: reactions,
-        userId: userId,
-        tags: tags,
+      payload: {post,
       },
     });
   };
