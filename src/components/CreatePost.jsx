@@ -18,12 +18,12 @@ export const CreatePost = () => {
     const reactions = reactionsElement.current.value;
     const tags = tagsElement.current.value.split(" "); //to split tags with spaces
 
-    // userIdElement.current.value = "";
-    // postTitleElement.current.value = "";
-    // postBodyElement.current.value = "";
-    // reactionsElement.current.value = "";
-    // tagsElement.current.value = "";
-
+    userIdElement.current.value = "";
+    postTitleElement.current.value = "";
+    postBodyElement.current.value = "";
+    reactionsElement.current.value = "";
+    tagsElement.current.value = "";
+    
     fetch("https://dummyjson.com/posts/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,7 +36,8 @@ export const CreatePost = () => {
       }),
     })
       .then((res) => res.json())
-      .then(post =>{ addPost(post)});
+      .then((post) =>{ 
+        addPost(post)});
   };
 
   return (
