@@ -2,43 +2,29 @@ import { useContext, useState } from "react";
 import { Post } from "./Post";
 import { PostList as PostListData } from "../store/post-list-store";
 import { WelcomeMessage } from "./WelcomeMessage";
-import { useEffect } from "react";
-import { LoadingSpinner } from "./LoadingSpinner";
+import { useLoaderData } from "react-router-dom";
+//import { useEffect } from "react";
+//import { LoadingSpinner } from "./LoadingSpinner";
+
 export const PostList = () => {
-  const { postList, /*addInitialPosts*/ fetching } = useContext(PostListData);
-//  const[fetching ,setFetching ]=useState(false)
-
-
-//    useEffect(() =>{
-//     setFetching(true);
-//     const controller = new AbortController();
-//     const signal = controller.signal;
-
-//     fetch("https://dummyjson.com/posts",{signal})
-//       .then((res) => res.json())
-//       .then((data) => {
-//         addInitialPosts(data.posts);
-//          setFetching(false);
-//       });
-
-//       return () => {
-//         console.log("cleaning up UseEffect");
-//         controller.abort();
-//       }
-//   }, []);
-
-  // const handleGetPostsClick = () => {
-   
-  // };
+ // const { postList } = useContext(PostListData);
+const postList = useLoaderData();
 
   return (
     <>
-    {fetching && <LoadingSpinner/>}
-      {!fetching && postList.length === 0 && <WelcomeMessage />}
+      {postList.length === 0 && <WelcomeMessage />}
 
-      {!fetching && postList.map((post) => (
+      {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}
     </>
   );
+};
+
+export const postLoader = () => {
+  return fetch("https://dummyjson.com/posts")
+    .then((res) => res.json())
+    .then((data) => {
+      return data.posts;
+    });
 };
